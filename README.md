@@ -1,4 +1,5 @@
-API REST de Idempiere
+# API REST de Idempiere
+
 Este documento proporciona una guía simplificada para usar la API REST de Idempiere, centrándose en tareas comunes como la autenticación y la creación de pedidos. Para obtener información más detallada, consulte el wiki oficial: https://wiki.idempiere.org/en/REST_Web_Services.
 
  Notas importantes:
