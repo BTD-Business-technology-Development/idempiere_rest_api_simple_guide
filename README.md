@@ -1,7 +1,7 @@
 API REST de Idempiere
 Este documento proporciona una guía simplificada para usar la API REST de Idempiere, centrándose en tareas comunes como la autenticación y la creación de pedidos. Para obtener información más detallada, consulte el wiki oficial: https://wiki.idempiere.org/en/REST_Web_Services.
 
-##### Notas importantes:
+ Notas importantes:
 
 - Permisos: El acceso a la API está limitado por los permisos del usuario.
 - Usuario del sistema: No se puede acceder al usuario del sistema a través de la API.
@@ -21,10 +21,10 @@ El sistema de autentacion de la API esta basado en JSON Web Token, por lo que es
 
 El Endpoint sobre que usaremos para nuestro login es /`api/v1/auth/tokens`, veamos los dos posibles casos:
 
-##### Login un solo paso
+#### Login un solo paso
 Si poseemos todos los campos mencionados anteriormente, podemos autenticar a los usarios con una sola peticion (POST), con el siguiente **body**:
 
-```
+```json
 {
     "userName": "example",
     "password": "password",
@@ -86,7 +86,7 @@ En caso de querer iniciar sesion, eligiendo un rol, almacen o cliente, etc..., n
 
 `POST .../api/v1/auth/tokens`
 
-```Json
+```json
 {
     "userName": "username",
     "password": "password"
@@ -95,9 +95,8 @@ En caso de querer iniciar sesion, eligiendo un rol, almacen o cliente, etc..., n
 
 Response Payload
 
-```
+```json
 // Response Payload
-
 {
     "clients": [
         {
@@ -154,7 +153,7 @@ Response Payload
   "refresh_token":"eyJraWQiOiJpZGVtcGllcmUiLCJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIwODk1OTIyNC1iYzBhLTRkNTQtOTlhZS1jNmRmZjNiOGEwMzUiLCJpc3MiOiJpZGVtcGllcmUub3JnIiwiZXhwIjoxNzAxODU4MzM3fQ.uSE5SOtWgPvReC4JtyV4alHd-ccU0L9QhIpP2TwT7C5TJFeCGVYTdyWc291DaIweyiIGCfWFgQlbe0oH1EEXXg"
 }
 ```
-# Refresh Token
+#### Refresh Token
 Como vez en el payload anterior, el **token** base expira cada hora, el **refresh_token **cada 24 horas por defecto, pero esto puede variar segun la configuracion del sistema
 
 Cuando el Token expire, puedes generarlo de nuevo:
@@ -175,7 +174,7 @@ GET -> `/api/v1/models/c_bpartner`
 
 Esto devolvera un payload con la siguiente estructura:
 
-```
+```json
 {
     "page-count": 1,
     "records-size": 100,
